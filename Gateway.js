@@ -26,6 +26,17 @@ app.get("/search/:topic", async (req, res) => {
   }
 });
 
+app.get("/info/:id", async (req, res) => {
+  try {
+    let id = req.params.id;
+    let response = await axios.get(
+      `http://localhost:8058/SpecificBookWithID/${id}`
+    );
+    res.status(200).send(response.data);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+});
 app.listen(PORT, () => {
   console.log(`The Search Service is running on port ${PORT}`);
 });

@@ -16,6 +16,11 @@ const readItem = (callback) => {
   dp.all(sql, [], callback);
 };
 
+const readItemWithID = (id, callback) => {
+  const sql = `SELECT * FROM Book WHERE ID = ?`;
+  dp.all(sql, [id], callback);
+};
+
 const readSpecificTopic = (topic, callback) => {
   const sql = `SELECT * FROM Book where Topic = ?`;
   dp.all(sql, [topic], callback);
@@ -40,5 +45,6 @@ const deleteItem = (id) => {
 module.exports = {
   readItem,
   readSpecificTopic,
+  readItemWithID,
   updateItem,
 };

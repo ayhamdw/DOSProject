@@ -1,6 +1,11 @@
 const express = require("express");
 const app = express();
-let { readItem, readSpecificTopic, updateItem } = require("./Database/CRUD");
+let {
+  readItem,
+  readSpecificTopic,
+  readItemWithID,
+  updateItem,
+} = require("./Database/CRUD");
 const PORT = 8058;
 
 app.get("/AllCatalog", (req, res) => {
@@ -20,6 +25,17 @@ app.get("/AllCatalog/:topic", (req, res) => {
     if (err) {
       console.log("Error When Getting Specific Book");
       res.status(500).send("Error While Getting Specific Book");
+    } else {
+      res.status(200).json(row);
+    }
+  });
+});
+
+app.get("/SpecificBookWithID/:id", (req, res) => {
+  const id = req.params.id;
+  readItemWithID(id, (err, row) => {
+    if (err) {
+      res.status(500).send("Error While Reading a Book With Specific ID");
     } else {
       console.log("Test");
       res.status(200).json(row);
