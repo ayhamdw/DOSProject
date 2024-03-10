@@ -4,8 +4,7 @@ let {
   readItem,
   readSpecificTopic,
   readItemWithID,
-  updateItem,
-} = require("./Database/CRUD");
+} = require("../Database/CRUD");
 const PORT = 8058;
 
 app.get("/AllCatalog", (req, res) => {

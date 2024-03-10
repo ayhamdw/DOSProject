@@ -6,7 +6,7 @@ let dp = new sql.Database(myDatabase, (err) => {
   } else {
     console.log("Connected Database");
     dp.run(
-      "CREATE TABLE IF NOT EXISTS Book (ID INTEGER PRIMARY KEY , Name VARCHAR(80), Topic VARCHAR(80),  Stocks INTEGER)",
+      "CREATE TABLE IF NOT EXISTS Book (ID INTEGER PRIMARY KEY , Name VARCHAR(80), Topic VARCHAR(80),  Stocks INTEGER , Cost INTEGER)",
       (err) => {
         if (err) {
           console.log("Error while creating table");

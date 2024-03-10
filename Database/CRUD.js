@@ -1,8 +1,8 @@
 let dp = require("./Create");
 
-const createItem = (id, name, topic, stocks, callback) => {
-  const sql = `INSERT INTO Book VALUES (?,?,?,?)`;
-  dp.run(sql, [id, name, topic, stocks], (err) => {
+const createItem = (id, name, topic, stocks, cost, callback) => {
+  const sql = `INSERT INTO Book VALUES (?,?,?,?,?)`;
+  dp.run(sql, [id, name, topic, stocks, cost], (err) => {
     if (err) {
       console.log("Error While inserted New Book");
     } else {
@@ -27,19 +27,8 @@ const readSpecificTopic = (topic, callback) => {
 };
 
 const updateItem = (id, stocks, callback) => {
-  const sql = `UPDATE Book set stocks = ? WHERE id = ?`;
-  dp.run(sql, [id, stocks], callback);
-};
-
-const deleteItem = (id) => {
-  const sql = `DELETE FROM Book WHERE id = ?`;
-  dp.run(sql, [id], (err) => {
-    if (err) {
-      console.log("Error where deleting an items");
-    } else {
-      console.log("Deleting Done");
-    }
-  });
+  const sql = `UPDATE Book set Stocks = ? WHERE id = ?`;
+  dp.run(sql, [stocks, id], callback);
 };
 
 module.exports = {
@@ -47,4 +36,5 @@ module.exports = {
   readSpecificTopic,
   readItemWithID,
   updateItem,
+  createItem,
 };
