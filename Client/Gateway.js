@@ -1,7 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const app = express();
-const PORT = 8785;
+const PORT = 1775;
 app.use(express.json());
 
 app.get("/search", async (req, res) => {
@@ -52,5 +52,5 @@ app.post("/purchase/:id", async (req, res) => {
   }
 });
 app.listen(PORT, () => {
-  console.log(`The Search Service is running on port ${PORT}`);
+  console.log(`The Gateway Service is using port ${PORT}`);
 });

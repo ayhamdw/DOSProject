@@ -3,7 +3,7 @@ let axios = require("axios");
 let app = express();
 let PORT = 8084;
 
-const { readItemWithID, updateItem } = require("../Database/CRUD");
+const { readItemWithID, updateItem } = require("../CatalogService/CRUD");
 
 app.get("/PurchaseBook/:id", async (req, res) => {
   try {
