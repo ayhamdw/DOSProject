@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 1775
 
 # Command to run the application
-CMD ["node", "Gateway.js"]
+CMD ["node", "Client/Gateway.js"]

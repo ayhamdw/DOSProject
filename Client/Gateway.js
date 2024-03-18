@@ -6,7 +6,7 @@ app.use(express.json());
 
 app.get("/search", async (req, res) => {
   try {
-    const response = await axios.get("http://localhost:8058/AllCatalog");
+    const response = await axios.get("http://catalog:8058/AllCatalog");
     res.send(response.data);
   } catch (error) {
     console.error("Error:", error.message);
@@ -18,7 +18,7 @@ app.get("/search/:topic", async (req, res) => {
   try {
     const topic = req.params.topic;
     const response = await axios.get(
-      `http://localhost:8058/AllCatalog/${topic}`
+      `http://catalog:8058/AllCatalog/${topic}`
     );
     res.send(response.data);
   } catch (error) {
@@ -31,7 +31,7 @@ app.get("/info/:id", async (req, res) => {
   try {
     let id = req.params.id;
     let response = await axios.get(
-      `http://localhost:8058/SpecificBookWithID/${id}`
+      `http://catalog:8058/SpecificBookWithID/${id}`
     );
     res.status(200).send(response.data);
   } catch (error) {
@@ -44,13 +44,14 @@ app.post("/purchase/:id", async (req, res) => {
     console.log("IN");
     const id = req.params.id;
     const response = await axios.get(
-      `http://localhost:8084/PurchaseBook/${id}`
+      `http://order:8084/PurchaseBook/${id}`
     );
     res.status(201).send(response.data);
   } catch (error) {
     res.send(error.message + " Hello");
   }
 });
+
 app.listen(PORT, () => {
   console.log(`The Gateway Service is using port ${PORT}`);
 });

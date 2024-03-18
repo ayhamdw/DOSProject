@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 8084
 
 # Command to run the application
-CMD ["node", "Order.js"]
+CMD ["node", "OrderService/Order.js"]

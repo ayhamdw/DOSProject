@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  catalog:
+    build: ./CatalogService
+    ports: 
+      - "8058:8058"
+    volumes:
+      - .:/app
+      - /app/node_modules
+   
+
+  view:
+    build: ./Client
+    ports:
+      - "1775:1775" 
+    volumes:
+      - .:/app    
+      - /app/node_modules
+   
+
+  order:
+    build: ./OrderService
+    ports:
+      - "8084:8084"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - catalog
+    

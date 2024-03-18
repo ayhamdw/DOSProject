@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy package.json and package-lock.json files to the container
 
-COPY ../package*.json ./
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 8058
 
 # Command to run the application
-CMD ["node", "Catalog.js"]
+CMD ["node", "CatalogService/Catalog.js"]
