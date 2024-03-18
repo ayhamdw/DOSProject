@@ -3,13 +3,13 @@ let axios = require("axios");
 let app = express();
 let PORT = 8084;
 
-const { readItemWithID, updateItem } = require("../CatalogService/CRUD");
+const { readItemWithID, updateItem } = require("./CatalogService/CRUD");
 
 app.get("/PurchaseBook/:id", async (req, res) => {
   try {
     const id = req.params.id;
     const response = await axios.get(
-      `http://localhost:8058/SpecificBookWithID/${id}` //! check if the bock is exist
+      `http://dosproject-catalog-service-1:8058/SpecificBookWithID/${id}` //! check if the bock is exist
     );
 
     //! check if the book is found (Correct ID)

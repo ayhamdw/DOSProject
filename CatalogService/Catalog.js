@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 let { readItem, readSpecificTopic, readItemWithID } = require("./CRUD");
 const PORT = 8058;
-
 app.get("/AllCatalog", (req, res) => {
   readItem((err, row) => {
     if (err) {

@@ -6,14 +6,14 @@ WORKDIR /app
 
 # Copy package.json and package-lock.json files to the container
 
-COPY ../package*.json ./
+COPY ./package*.json ./
 
 # Install dependencies
 RUN npm install
 
 RUN apt-get update && apt-get install -y sqlite3
 
-COPY . .
+COPY . ./CatalogService
 
 # Copy the rest of the application code
 
@@ -21,4 +21,4 @@ COPY . .
 EXPOSE 8058
 
 # Command to run the application
-CMD ["node", "Catalog.js"]
+CMD ["node", "./CatalogService/Catalog.js"]

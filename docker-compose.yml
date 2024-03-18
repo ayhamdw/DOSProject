@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  catalog-service:
+    build:
+      context: ./CatalogService
+    ports:
+      - "8058:8058"
+    environment:
+      - NODE_ENV=production
+      - PORT=8058
+    volumes:
+      - ./CatalogService:/app/CatalogService
+      - ./CatalogService/BookDatabase.dp:/app/CatalogService/BookDatabase.dp
+
+  order-service:
+    build:
+      context: ./OrderService
+    ports:
+      - "8084:8084"
+    depends_on:
+      - catalog-service
+    environment:
+      - NODE_ENV=production
+      - PORT=8084
+    volumes:
+      - ./OrderService:/app/OrderService
+      - ./CatalogService:/app/CatalogService
+
+  client:
+    build:
+      context: ./Client
+    ports:
+      - "1775:1775"
+    depends_on:
+      - catalog-service
+      - order-service
+    environment:
+      - NODE_ENV=production
+      - PORT=1775
+    volumes:
+      - ./Client:/app/Client
