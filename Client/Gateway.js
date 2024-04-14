@@ -38,7 +38,7 @@ app.get("/info/:id", async (req, res) => {
     );
     res.status(200).send(response.data);
   } catch (error) {
-    res.status(500).send(error.message);
+    res.status(500).send(response.data);
   }
 });
 
